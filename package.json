@@ -1,0 +1,11 @@
+{
+  "name": "data-structures",
+  "version": "1.0.0",
+  "description": "this is my process learning data structure and the purpose of this project is to learn and capture ideas for future references and learning and understanig in the bes possible way.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "kourosh mirzaei",
+  "license": "MIT"
+}
