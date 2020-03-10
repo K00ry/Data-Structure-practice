@@ -29,10 +29,12 @@ BST.prototype.contains = function(value){
     }
 };
 
-BST.prototype.depthFirstOrder = function(iterator){
-  if (this.left)  this.left.depthFirstOrder(iterator);
- iterator(this.value);
-  if(this.right)  this.right.depthFirstOrder(iterator);
+BST.prototype.depthFirstOrder = function(iterator,order){
+    if (order === 'pre-order') iterator(this.value);
+    if (this.left)  this.left.depthFirstOrder(iterator,order);
+    if (order === 'in-order') iterator(this.value);
+    if(this.right)  this.right.depthFirstOrder(iterator,order);
+    if (order === 'post-order') iterator(this.value);
 };
 
 
@@ -41,15 +43,20 @@ test.insert(3);
 test.insert(6);
 test.insert(4);
 test.insert(9);
-function LOg(value){
+test.insert(11);
+test.insert(15);
+test.insert(17);
+test.insert(19);
+test.insert(20);
+function LOg(value ){
     console.log(value);
 }
-test.depthFirstOrder(LOg);
+test.depthFirstOrder(LOg,"pre-order");
 
 
 let contain = test.contains(7);
 
 
 //
-// console.log(test);
+console.log(test);
 // console.log(contain);

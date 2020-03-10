@@ -112,3 +112,16 @@ myLL.addToTail(40);
 console.log(ll.indexOf(3));
 console.log(ll);
 
+
+function factorial (val){
+
+    if(val === 2){
+        return val
+    }
+   else{
+       return val * factorial(val - 1);
+    }
+}
+
+console.log(factorial(5));
+
