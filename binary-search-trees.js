@@ -36,25 +36,40 @@ BST.prototype.depthFirstOrder = function(iterator,order){
     if(this.right)  this.right.depthFirstOrder(iterator,order);
     if (order === 'post-order') iterator(this.value);
 };
+BST.prototype.breadthFirstTraversal = function(iterator){
+    let que = [this];
+    while(que.length){
+        let treeNode = que.shift();
+        iterator(treeNode);
+        if(treeNode.left) que.push(treeNode.left);
+        if(treeNode.right) que.push(treeNode.right);
+    }
+};
 
 
-let test = new BST(3);
-test.insert(3);
-test.insert(6);
-test.insert(4);
-test.insert(9);
-test.insert(11);
-test.insert(15);
-test.insert(17);
-test.insert(19);
+let test = new BST(50);
+test.insert(30);
+test.insert(70);
+test.insert(100);
+test.insert(60);
+test.insert(59);
 test.insert(20);
+test.insert(45);
+test.insert(35);
+test.insert(85);
+test.insert(105);
+test.insert(10);
 function LOg(value ){
     console.log(value);
 }
-test.depthFirstOrder(LOg,"pre-order");
-
-
-let contain = test.contains(7);
+function log_breadth(node){
+    console.log(node.value);
+}
+// test.depthFirstOrder(LOg,"pre-order");
+test.breadthFirstTraversal(log_breadth);
+//
+//
+// let contain = test.contains(7);
 
 
 //
