@@ -14,15 +14,51 @@ class LinkedList{
     // Insert First node to LL
     InsertFirst(data){
         this.head = new Node(data,this.head)
-        this.size += 1
+        this.size++
     }
 
     //Insert LastNode
-    // InsertLast(data){
-    //     new Node(data,null)
-    //
-    //
-    // }
+
+    InsertLast(data){
+        let node = new Node(data);
+        let current;
+        if(!this.head){
+            this.head = node;
+        }else{
+        current = this.head;
+            while(current.next){
+                current = current.next;
+            }
+            current.next= node;
+        }
+        this.size++
+    }
+
+
+    InsertAtIndex(data,index){
+       // requested index is out of range
+        if(index > 0 && index > this.size){
+           return;
+        }
+        if(index === 0){
+            this.InsertFirst(data);
+            return
+        }
+        let node = new Node(data);
+        let current,previous;
+        let count = 0;
+        current = this.head;
+
+        while(count < index){
+            previous = current;
+            count++
+            current = current.next;
+        }
+        node.next = current;
+        previous.next = node;
+
+
+    }
 
     //Print each Node Data
 
@@ -42,6 +78,8 @@ const jj = new LinkedList();
 jj.InsertFirst(100);
 jj.InsertFirst(200);
 jj.InsertFirst(300);
-jj.InsertFirst(400);
+jj.InsertLast(400);
+console.log(jj);
+jj.InsertAtIndex(500,2);
 
 jj.PrintData();
